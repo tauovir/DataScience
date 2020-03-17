@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>House Pricing</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+        <!--<link rel="stylesheet" href="form.css">-->
+        <!--<script src="form.js"></script> -->
+        <style>
+    .errorClass1 {
+      color: red;
+   }
+   </style>
+      <script type = "text/javascript" 
+         src = "{{ url_for('static', filename = 'hello.js') }}" ></script>
+    </head>
+    <body >
+        <div class="container">
+         <body>
+      <!--<input type = "button" onclick = "sayHello()" value = "Say Hello22" />-->
+   </body>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h2 style = "margin-left : 100px">Profit House Price.</h2><h1></h1>
+                    <h4 style = "color: green">Star-tup companies investment on R&d, Administration and Marketing to get Profit</h4>
+                    <p> This application will prophesy profit according to investment in a particular state.</p>
+                    <form role="form" method="post" id="reused_form" action = "/predict">
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label for="name">Square Feet:</label>
+                                <input type="text" class="form-control" id="sqft" name="sqft" maxlength="50" onkeypress="return isNumberKey(event)">
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label for="name">Balcony:</label>
+                                <input type="text" class="form-control" id="balcony" name="balcony" maxlength="5" onkeypress="return isNumberKey(event)">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label for="email"> Bathroom:</label>
+                                <input type="text" class="form-control" id="bath" name="bath" maxlength="10" onkeypress="return isNumberKey(event)">
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label for="name">BHK:</label>
+                                <input type="text" class="form-control" id="bhk" name="bhk" maxlength="8" onkeypress="return isNumberKey(event)">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 form-group">
+                                <label for="email"> Location:</label>
+                                 <select class="form-control" name = "location" id="location">
+                                
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <button type="button" class="btn btn-lg btn-success btn-block" id="pred">Result: </button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <button type="submit" class="btn btn-lg btn-success btn-block" id="btnContactUs">Predict Profit </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Sent your message successfully!</h3> </div>
+                    <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your form. </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+    function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode == 46)
+         return true
+         else if (charCode > 31  && (charCode < 48 || charCode > 57))
+            return false;
+
+         return true;
+      }
+$(document).ready(function() {
+   jQuery("#reused_form").validate({
+   debug: false,
+   errorClass : "errorClass1",
+      rules: {
+        rnd: {
+          required: true,
+          number: true
+        },
+         admin: {
+          required: true,
+          number: true
+        },
+       marketing: {
+          required: true,
+          number: true
+        },
+      },
+    messages: {
+   sqft: {
+          required: 'Please Enter Square feet',
+          number: 'Please enter valid amount',
+        },
+    balcony: {
+          required: 'Please Enter Number of Balcony',
+          number: 'Please enter valid amount',
+        },
+        bath: {
+          required: 'Please Enter number of bathroom',
+          number: 'Please enter valid amount',
+        },
+    bhk: {
+          required: 'Please Enter number of BHK',
+          number: 'Please enter valid amount',
+        },
+},
+   });
+   
+
+
+$.ajax({
+        url: "http://127.0.0.1:5000/get_location_name",
+        type: 'get',
+        success: function(data){
+            //If the success function is execute,
+            //then the Ajax request was successful.
+            //Add the data we received in our Ajax
+            //request to the "content" div.
+           // $('#content').html(data);
+           $("#location").empty()
+           data1 = data.locations
+           for( var i in data1){
+               var opt = new Option(data1[i])
+               $("#location").append(opt)
+           }
+           
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            var errorMsg = 'Ajax request failed: ' + xhr.responseText;
+            $('#content').html(errorMsg);
+            }
+            });
+
+});
+</script>
+</html>

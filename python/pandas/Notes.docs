@@ -1,0 +1,32 @@
+A sample of 101010 boxes of raisins has these weights (in grams):
+252525, 282828, 292929, 292929, 303030, 343434, 353535, 353535, 373737, 383838
+Make a box plot of the data.
+Step 1: Order the data from smallest to largest.
+Our data is already in order.
+252525, 282828, 292929, 292929, 303030, 343434, 353535, 353535, 373737, 383838
+Step 2: Find the median.
+The median is the mean of the middle two numbers:
+252525, 282828, 292929, 292929, \large{30}3030, \large{34}3434, 353535, 353535, 373737, 383838
+\dfrac{30+34}{2}=32 
+2
+30+34
+​	
+ =32start fraction, 30, plus, 34, divided by, 2, end fraction, equals, 32
+The median is 323232.
+Step 3: Find the quartiles.
+The first quartile is the median of the data points to the left of the median.
+252525, 282828, \large{29}2929, 292929, 303030
+Q_1=29Q 
+1
+​	
+ =29Q, start subscript, 1, end subscript, equals, 29
+The third quartile is the median of the data points to the right of the median.
+343434, 353535, \large{35}3535, 373737, 383838
+Q_3=35Q 
+3
+​	
+ =35Q, start subscript, 3, end subscript, equals, 35
+Step 4: Complete the five-number summary by finding the min and the max.
+The min is the smallest data point, which is 252525.
+The max is the largest data point, which is 383838.
+The five-number summary is 252525, 292929, 323232, 353535, 383838.

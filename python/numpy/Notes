@@ -1,0 +1,10 @@
+Using NumPy, a developer can perform the following operations −
+
+Mathematical and logical operations on arrays.
+
+Fourier transforms and routines for shape manipulation.
+
+Operations related to linear algebra. NumPy has in-built functions for linear algebra and random number generation.
+NumPy – A Replacement for MatLab
+
+NumPy is often used along with packages like SciPy (Scientific Python) and Mat−plotlib (plotting library). This combination is widely used as a replacement for MatLab,
